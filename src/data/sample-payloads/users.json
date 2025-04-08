@@ -1,0 +1,42 @@
+[
+    {
+        "id": 0,
+        "username": "dummy_user",
+        "firstName": "dummencio",
+        "lastName": "larencio",
+        "email": "dummy@domain.com",
+        "password": "dummyPassword",
+        "phone": "+52 318746985",
+        "userStatus": 0
+    },
+    {
+        "id": 1,
+        "username": "dummy_user_1",
+        "firstName": "dummenciano",
+        "lastName": "larenciano",
+        "email": "dummy1@domain.com",
+        "password": "dummyPassword",
+        "phone": "+52 789465824",
+        "userStatus": 0
+    },
+    {
+        "id": 2,
+        "username": "dummy_user_2",
+        "firstName": "dummen",
+        "lastName": "larencini",
+        "email": "dummy2@domain.com",
+        "password": "dummyPassword",
+        "phone": "+52 6548514872",
+        "userStatus": 1
+    },
+    {
+        "id": 3,
+        "username": "dummy_user_3",
+        "firstName": "dummentrio",
+        "lastName": "larenca",
+        "email": "dummy4@domain.com",
+        "password": "dummyPassword",
+        "phone": "+52 7489614203",
+        "userStatus": 1
+    }
+]
