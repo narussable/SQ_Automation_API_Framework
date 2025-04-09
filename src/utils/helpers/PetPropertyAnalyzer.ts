@@ -18,7 +18,7 @@ export class PetPropertyAnalyzer {
           return PetPropertyAnalyzer.instance;
     }
 
-    public load (listOfPets): void {
+    public load (listOfPets: any): void {
         this.pets = listOfPets;
     }
 

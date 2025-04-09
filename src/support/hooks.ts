@@ -2,7 +2,7 @@
 
 import { Before, After, BeforeAll, AfterAll } from '@cucumber/cucumber';
 import { request, APIRequest } from '@playwright/test';
-import { Logger } from '../utils/logger';
+import { Logger } from '../utils/Logger';
 import { CustomWorld } from './world';
 import sampleHeader from '../data/sample-headers/users.json';
 import config from '../../playwright.config';
@@ -21,7 +21,7 @@ Before (async function (this: CustomWorld) {
   
       logger.debug (`Base URL: ${process.env.API_BASE_URL}`);
       logger.debug (`Base Headers: ${JSON.stringify (sampleHeader, null, 2)}`);
-      logger.log ('✅ API context initialized for scenario');
+      logger.debug ('✅ API context initialized for scenario');
     } catch (error) {
       logger.error ('❌ Failed to initialize API context');
       throw error;
@@ -30,5 +30,5 @@ Before (async function (this: CustomWorld) {
 
 After (async function (this: CustomWorld) {
     await this.apiContext.dispose ();
-    logger.log ('API context disposed for scenario');
+    logger.debug ('API context disposed for scenario');
 });

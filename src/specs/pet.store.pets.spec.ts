@@ -1,7 +1,7 @@
 "use strict";
 
 import { test, expect } from '@playwright/test';
-import { Logger } from '../utils/logger';
+import { Logger } from '../utils/Logger';
 import { PetPropertyAnalyzer } from '../utils/helpers/PetPropertyAnalyzer';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -23,7 +23,7 @@ test ('Retrieve sold pet names', async ({ playwright }) => {
     logger.debug (`API Resoponse: ${JSON.stringify (responseBody, null, 2)}`);
 
     // Print tuples { id, name }
-    const formatedTuples = responseBody.map (pet => { return { id: pet.id, name: pet.name }; });
+    const formatedTuples = responseBody.map ((pet: any) => { return { id: pet.id, name: pet.name }; });
     logger.log (formatedTuples);
 
     expect (createResponse.status ()).toBe (200);
@@ -45,7 +45,7 @@ test ('Group and summarize sold pet\'s names', async ({ playwright }) => {
     logger.debug (`API Resoponse: ${JSON.stringify (responseBody, null, 2)}`);
 
     // Print tuples { id, name }
-    const formatedTuples = responseBody.map (pet => { return { id: pet.id, name: pet.name }; });
+    const formatedTuples = responseBody.map ((pet: any) => { return { id: pet.id, name: pet.name }; });
     petAnalyzer.load (formatedTuples);
     const groupedByName: Record<string,number> = petAnalyzer.countByProperty ('name');
     logger.log (groupedByName);
