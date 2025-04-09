@@ -2,16 +2,23 @@
   "name": "aqli.exam.api.fram",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:api": "cucumber-js --require-module ts-node/register --require src/steps/**/*.ts --require src/support/**/*.ts src/features/**/*.feature --format @cucumber/pretty-formatter"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@cucumber/pretty-formatter": "^1.0.1",
     "@playwright/test": "^1.51.1",
-    "@types/node": "^22.14.0"
+    "@types/luxon": "^3.6.2",
+    "@types/node": "^22.14.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   },
   "dependencies": {
+    "@cucumber/cucumber": "^11.2.0",
     "dotenv": "^16.4.7",
     "luxon": "^3.6.1"
   }

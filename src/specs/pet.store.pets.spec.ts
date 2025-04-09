@@ -1,7 +1,7 @@
 "use strict";
 
 import { test, expect } from '@playwright/test';
-import { Logger } from '../utils/Logger';
+import { Logger } from '../utils/logger';
 import { PetPropertyAnalyzer } from '../utils/helpers/PetPropertyAnalyzer';
 import dotenv from 'dotenv';
 import path from 'path';

@@ -9,7 +9,7 @@ export class Logger {
 
   constructor (methodName: string, timeZone?: string) {
     this.methodName = methodName;
-    this.debugMode = Boolean (process.env.DEBUG_MODE) ?? false;
+    this.debugMode = (process.env.DEBUG_MODE?.toLowerCase() === 'true');
     this.timeZone = timeZone ?? 'America/Mexico_City';
   };
 
@@ -18,9 +18,16 @@ export class Logger {
       typeof data === 'object'
         ? JSON.stringify (data, null, 2)
         : `${data}`;
-    const baseString: string = `[${timestamp}][${this.methodName}]${logType == undefined ? '' : `[${logType}]`}`;
+    const baseString: string = `[${timestamp}][${this.methodName}]${logType == undefined ? '' : `[${logType == 'WARN' ? 'DEBUG' : logType}]`}`;
     
-    console.log (`${baseString} --> ${formatted}`);
+    const printFoo = (logType: string) => {
+      return logType == 'LOG' ? console.log :
+        logType == 'WARN' ? console.warn :
+          logType == 'ERROR' ? console.error :
+            logType == 'DEBUG' ? console.debug : console.log;
+    }
+
+    printFoo (logType ?? 'LOG')(`${baseString} --> ${formatted}`);
   }
 
   public log (data: unknown): void {
@@ -28,7 +35,7 @@ export class Logger {
       .setZone(this.timeZone)
       .toFormat("yyyy-MM-dd HH:mm:ss");
 
-    this.formatedPrint (data, timestamp);
+    this.formatedPrint (data, timestamp, 'LOG');
   }
 
   public error (data: unknown): void {
@@ -44,7 +51,7 @@ export class Logger {
       .setZone(this.timeZone)
       .toFormat("yyyy-MM-dd HH:mm:ss");
     if (this.debugMode) {
-        this.formatedPrint (data, timestamp, 'DEBUG');
+        this.formatedPrint (data, timestamp, 'WARN');
     }
   } 
 
